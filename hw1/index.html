@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <style>
+        body {
+            background: white;
+        }
+        
+        div#header
+        {
+            background:transparent;color:white;top:0;left:0;width:auto;height:300px;
+                   text-align:center;
+
+        }
+        div#header h1{font-size:32px;}
+        div#header img{position:absolute;top:0;left:0;width:2000px;height:300px;}
+
+        #mainwin{
+          
+            position:absolute;
+            top:300px;
+            left:0px;
+            background:-webkit-linear-gradient(left,white,lightblue);
+            background:-moz-linear-gradient(left,white,lightblue);
+            /*left:0px;*/
+            width:2000px;
+            
+        }
+        #navsidebar{
+            display:block;
+            width:300px;
+            height:800px;
+            float:left;
+            left:0px;
+            
+            background:-webkit-linear-gradient(left,lightblue,white);
+             background:-moz-linear-gradient(left,lightblue,white);
+            border: solid 5px red;
+            border-style:outset;
+        }
+        #navsidebar ul{
+            list-style-type:none;
+            left:0px;
+            width:300px;
+        }
+        #navsidebar h1{text-align:center;color:blue;}
+        #navsidebar ul li{
+            width:200px;
+          left:0px;
+           margin-bottom:70px;
+            background: yellow;
+            background:-webkit-linear-gradient(top,orange,yellow);
+            background:-moz-linear-gradient(top,orange,yellow);
+            color:red;
+            border: solid 6px yellow;
+            border-style:outset;
+            text-align:center;
+        }
+        
+        #article
+        {
+            position:absolute;
+            top:0px;
+            left:820px;
+            width:500px;
+            height:800px;
+            background:-webkit-linear-gradient(left,lightblue,white);
+            background:-moz-linear-gradient(left,lightblue,white);
+            border:solid 6px yellow;
+            border-style:outset;
+        }
+       
+        .art ul li,#article h1{
+            text-align:center;
+            color:teal;
+        }
+        #intro h1,p,h3
+        {
+            color:green;
+            text-align:center;
+        }
+        #intro 
+        {
+            position:absolute;
+            top:0px;
+            left:310px;
+            width:500px;
+            height:800px;
+            background:-webkit-linear-gradient(left,white,lightblue);
+            background:-moz-linear-gradient(left,white,lightblue);
+            border:solid 6px yellow;
+            border-style:outset;
+        }
+        #intro img
+        {
+           position:relative;
+           left:150px;
+        }
+        #homework
+        {
+            position:absolute;
+            text-align:center;
+            color:green;
+            top:0px;
+            left:1330px;
+            width:500px;
+            height:800px;
+            background:-webkit-linear-gradient(left,white,lightblue);
+             background:-moz-linear-gradient(left,white,lightblue);
+            border:solid 6px yellow;
+            border-style:outset;
+        }
+        #homework ul li
+        {
+            color:teal;
+        }
+    </style>
+</head>
+<body>
+   <div id="header">
+       
+   <img src="head.jpg">
+
+      
+      <h1>welcome to nowhere</h1>
+   </div>
+    <div id="mainwin">
+        <div id="sidebar">
+            
+            <nav id="navsidebar">
+                <h1>导航</h1>
+                <ul id="guide">
+                    <li>
+                        <a href="intro.html">个人简介</a>
+                    </li>
+                    <li>
+                        <a href="log.html">日志</a>
+                    </li>
+                    <li>
+                        <a href="#">作业</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="article">
+            <h1>LOG</h1>
+            <article class="art">
+                
+                <nav>
+                    <ul>
+                        <li><a href="log.html">关于web的学习</a></li>
+                    </ul>
+                </nav>
+            </article>
+        </div>
+        <div id="intro">
+            <h1>SELF INTRODUCE</h1>
+            <img src="potrait.jpg" width="200px" height="200px" />
+            <p>
+                i am not gonna tell u who i am<br />
+                guess what? i dont intend to introduce<br />
+                myself at all.<br />
+                instead,i suggest u guess who i am.<br />
+                so who might i be?<br />
+                someone,no one.<br />
+                so u might ask:"are u human?"<br />
+                maybe<br />
+                or u may ask:"are u alien?"<br />
+                well ,perhaps...<br />
+                so are u getting bored at reading these things?<br />
+                that's right!<br />
+                why do i have to let other people know who i am?<br />
+                since it is not funny and<br />
+                they dont pay me money anyway...<br />
+                so finally......<br />
+                I AM MR NONOME<br />
+                <br />
+                <h3 >to see more,check left sidebar...<br /></h3>
+
+            </p>
+        </div>
+        <div id="homework">
+            <h1>作业</h1>
+            <ul>
+                <li><a href="">hw1 source code </a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <footer>
+        <h1> copyright</h1>
+    </footer>
+</body>
+</html>
