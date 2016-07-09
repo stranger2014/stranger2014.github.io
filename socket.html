@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+        <style>
+      body{
+          
+      }
+      #titlediv
+      {
+          
+        height:25%;
+        color:white;
+        width:100%;
+        position:absolute;
+        background:-webkit-linear-gradient(left,green,lightgreen);
+        font-size:100px;
+        white-space: nowrap;
+          border: 16px solid purple;
+          border-style: outset;
+
+      }
+      .normdiv
+      {
+          border: 6px solid cyan;
+          border-style: outset;
+        height:20%;
+        
+        width:100%;
+        position:absolute;
+        
+        background:-webkit-linear-gradient(left,orange,yellow);
+        
+        
+
+      }
+     
+      .context
+      {
+         
+          float:left;
+          height:100%;
+          position:relative;
+          
+          font-size:4vw;
+         
+      }
+      .context p
+      {
+          position: absolute;
+            margin-top: -0.3vw;
+           color:purple;
+          white-space:nowrap;
+      }
+     .context img
+      {
+           height:100%;
+      }
+
+</style>
+
+    <script src="https://wall.cgcgbcbc.com/socket.io/socket.io.js"></script>
+    
+    <script>
+        //var count = 0;
+        window.onload=function()
+        {
+         
+           // var xhr=new XMLHttpRequest();
+            //xhr.setRequestHeader('get','/api/message?num=3');
+            
+            //var str=document.getElementById("titlediv").textContent;
+            //var info=document.getElementById("titlediv").textContent;
+            String.prototype.gblen = function() {  
+  var len = 0;  
+  for (var i=0; i<this.length; i++) {  
+    if (this.charCodeAt(i)>127 || this.charCodeAt(i)==94) {  
+       len += 2;  
+     } else {  
+       len ++;  
+     }  
+   }  
+  return len;  
+};
+            //setInterval(setSatatus,500);
+            var str="这是一面微信板， 哈哈哈哈哈哈哈哈哈哈哈哈哈哈呵呵呵呵呵呵呵呵呵呵呵呵呵呵哈哈哈哈哈哈哈";
+            function left(id){
+            //var id=document.getElementById("titlediv");
+                
+                id.textContent=str.substring(0,str.length); 
+                            
+                str=str+str.substring(0,1);                             
+                str=str.substring(1,str.length);                       
+            }
+            var stra,strb,strc;
+            function aleft(id)
+            {
+                id.textContent=stra.substring(0,stra.length); 
+                            
+                stra=stra+stra.substring(0,1);                             
+                stra=stra.substring(1,stra.length); 
+            }
+            function bleft(id)
+            {
+                id.textContent=strb.substring(0,strb.length); 
+                            
+                strb+=strb.substring(0,1);                             
+                strb=strb.substring(1,strb.length); 
+            }
+            function cleft(id)
+            {
+                id.textContent=strc.substring(0,strc.length); 
+                            
+                strc=strc+strc.substring(0,1);                             
+                strc=strc.substring(1,strc.length); 
+            }
+//,"这是一面微信板， 哈哈哈哈哈哈哈哈哈哈哈哈哈哈呵呵呵呵呵呵呵呵呵呵呵呵呵呵哈哈哈哈哈哈哈   "
+            setInterval(function(){left(document.getElementById('titlediv'));},200);
+            
+            function isoverflow(icon,par)
+            {
+                //var par=document.getElementById(thetext);
+               // var icon=document.getElementById("icon"+thetext);
+            ////confirm(par.style.fontSize);
+             ////confirm(par.textContent.length*par.style.fontSize);
+            // //confirm(window.innerWidth-icon.width-100);
+                if(2*par.textContent.gblen()*window.innerWidth/100>window.innerWidth-icon.width)
+                {
+                    //confirm(par.textContent+' letter# is '+par.textContent.gblen()+' total length is '+2*par.textContent.gblen()*window.innerWidth/100+'  remaining space is '+(window.innerWidth-icon.width));
+                    ////confirm(window.innerWidth/100);
+                   ////confirm(par.textContent.length);
+                   // //confirm(window.innerWidth-icon.width);
+                    return true;
+                 // timeoutid= setInterval(function(){left(document.getElementsById(id));},200);
+                   ////confirm("keepon")
+                }
+                else return false;
+                
+            }
+            ////confirm('shit')
+            var socket = io('https://wall.cgcgbcbc.com/');
+            //var socket = io("http://localhost:3000");
+            ////confirm("shit");
+            
+            //socket.on('connect', function () { //confirm("connect"); });
+            //alert(socket.on('get','https://wall.cgcgbcbc.com/api/message?num=3'));
+              var xhr = new XMLHttpRequest();
+            xhr.open('get','https://wall.cgcgbcbc.com/api/message?num=1');
+            xhr.send(null);
+                xhr.onreadystatechange = function() {
+
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        alert('get history  '+xhr.responseText);
+
+                    }
+                }
+            
+            var count=0;
+               // var btn=document.getElementById("btn");
+                var isadmin=false;
+                var admin;
+                var timeout;
+            var diva, divb, divc;
+                divc = document.getElementById('c');
+                divb = document.getElementById('b');
+                diva = document.getElementById('a');
+                var contextc = divc.getElementsByClassName("context");
+                var contextb = divb.getElementsByClassName("context");
+                var contexta = diva.getElementsByClassName("context");
+                var stra,strb,strc;
+                var timec=-1,timeb=-1,timea=-1;
+            function listener(data)
+            {
+                
+                 count++;
+                if(isadmin==false)
+                {
+                    if (count >= 4)
+                    {
+
+                        contexta[0].removeChild(contexta[0].children[0]);
+                        contexta[1].removeChild(contexta[1].children[0]);
+                        contexta[0].appendChild(contextb[0].children[0]);
+                        contexta[1].appendChild(contextb[1].children[0]);
+                        //contextb[0].removeChild(contextb[0].children[0]);
+                        //contextb[1].removeChild(contextb[1].children[0]);
+                        contextb[0].appendChild(contextc[0].children[0]);
+                        contextb[1].appendChild(contextc[1].children[0]);
+
+
+
+
+                    }
+                    else if (count == 3)
+                    {
+                        //diva=document.createElement('div');
+                        //diva.name='a';
+
+                       // contexta[0].removeChild(contexta[0].children[0]);
+                       // contexta[1].removeChild(contexta[1].children[0]);
+
+                        contexta[0].appendChild(contextb[0].children[0]);
+                        contexta[1].appendChild(contextb[1].children[0]);
+
+                        contextb[0].appendChild(contextc[0].children[0]);
+                        contextb[1].appendChild(contextc[1].children[0]);
+                        stra=contexta[1].children[0].textContent;
+                        strb=contextb[1].children[0].textContent;
+                        ////confirm('b has '+contextb[0].childElementCount);
+
+                    }
+                    else if(count==2)
+                    {
+                        //if(contextc[0].hasChildNodes) //confirm("c has child");
+                        contextb[0].appendChild(contextc[0].children[0]);
+                        contextb[1].appendChild(contextc[1].children[0]);
+
+                        //strb=contextb[1].children[0].textContent;
+
+                    }
+
+               
+                   
+               ////confirm(contextc[0].id);
+                    var img = document.createElement('img');
+                    if(data.nickname=='admin')
+                        img.src = '1.jpg';
+                    else
+                        img.src=data.headimgurl;
+                        
+                    contextc[0].appendChild(img);
+                        
+                
+                    var para=document.createElement('p');
+                    para.textContent='   '+data.nickname + ':' + data.content+' ';
+                    para.textContent=para.textContent;
+                    contextc[1].appendChild(para);
+                         
+                    //strc=contextc[1].children[0].textContent;
+                   
+                     
+                }
+                /////////////////////////////////////////////////////////////////////
+                //ADMIN
+                else
+                {
+                    if(data.nickname!='admin')
+                    {
+                        if(count>=3)
+                        {
+                            contexta[0].removeChild(contexta[0].children[0]);
+                            contexta[1].removeChild(contexta[1].children[0]);
+                            contexta[0].appendChild(contextb[0].children[0]);
+                            contexta[1].appendChild(contextb[1].children[0]);
+                              
+                              
+                        }
+                        else if(count==2)
+                        {
+                            contexta[0].appendChild(contextb[0].children[0]);
+                            contexta[1].appendChild(contextb[1].children[0]);
+                        }
+                        var img = document.createElement('img');
+                        img.src = data.headimgurl;
+                        contextb[0].appendChild(img);
+                        
+                
+                        var para=document.createElement('p');
+                        para.textContent=data.nickname + ':' + data.content;
+                        para.textContent=para.textContent;
+                        contextb[1].appendChild(para);
+                            
+                    }
+                    else
+                    {
+                        clearTimeout(timeout);
+                        timeout=setTimeout(function(){isadmin=false;},10000);
+                        if(count==2)
+                        {
+                            contextb[0].appendChild(contextc[0].children[0]);
+                            contextb[1].appendChild(contextc[1].children[0]);
+                   // stra=contexta[1].children[0].textContent;
+                    //strb=contextb[1].children[0].textContent;
+                   
+                        }
+                        else if(count==3)
+                        {
+                                      //contexta[0].removeChild(contexta[0].children[0]);
+                                      //contexta[1].removeChild(contexta[1].children[0]);
+                            contexta[0].appendChild(contextb[0].children[0]);
+                            contexta[1].appendChild(contextb[1].children[0]);
+                            contextb[0].appendChild(contextc[0].children[0]);
+                            contextb[1].appendChild(contextc[1].children[0]);
+                                     
+                                     
+                                     
+                         }
+                        else if(count>=4)
+                        {
+                            contexta[0].removeChild(contexta[0].children[0]);
+                            contexta[1].removeChild(contexta[1].children[0]);
+                            contexta[0].appendChild(contextb[0].children[0]);
+                            contexta[1].appendChild(contextb[1].children[0]);
+                            contextb[0].appendChild(contextc[0].children[0]);
+                            contextb[1].appendChild(contextc[1].children[0]);
+                                     
+                                     
+                        }
+                        var img = document.createElement('img');
+                        img.src = '1.jpg';
+                        contextc[0].appendChild(img);
+                        
+                
+                        var para=document.createElement('p');
+                        para.textContent=data.nickname + ':' + data.content;
+                      
+                        contextc[1].appendChild(para);
+                               
+                   
+                               
+                    }
+                       
+                  }
+                
+                
+                  
+                if(isadmin==false&&data.nickname=='admin')
+                {
+                    isadmin=true; 
+                    divc.style.background="-webkit-linear-gradient(top,red,purple)";
+                    divc.children[1].children[0].style.color='yellow';
+                       
+                    timeout= setTimeout(function(){isadmin=false;divc.style.background="-webkit-linear-gradient(left,orange,yellow)";divc.children[1].children[0].style.color='purple';},10000);
+                }
+                if(timea!=-1)
+                {
+                   //confirm('img a width '+contexta[0].children[0].width);
+                   clearInterval(timea);timea=-1;
+                }
+                if(timeb!=-1)
+               {
+                   //confirm('img b width '+contextb[0].children[0].width);
+                   clearInterval(timeb);timeb=-1;
+               }
+                if(timec!=-1)
+               {
+                   //confirm('img c width '+contextc[0].children[0].width);
+                   clearInterval(timec);timec=-1;
+               }
+                if(contexta[1].childElementCount>0&&isoverflow(contexta[0].children[0],contexta[1].children[0]))
+                {
+                    ////confirm('stra is '+stra);
+                    stra=contexta[1].children[0].textContent;
+                    timea=setInterval(function(){aleft(contexta[1].children[0]);},200);
+                }
+                if(contextb[1].childElementCount>0&&isoverflow(contextb[0].children[0],contextb[1].children[0]))
+                {
+                    ////confirm('strb is '+strb);
+                    strb=contextb[1].children[0].textContent;
+                    timeb=setInterval(function(){bleft(contextb[1].children[0]);},200);
+                }
+                if(contextc[1].childElementCount>0&&isoverflow(contextc[0].children[0],contextc[1].children[0]))
+                {
+                    strc=contextc[1].children[0].textContent;
+                    ////confirm('strc is '+strc);
+                    timec=setInterval(function(){cleft(contextc[1].children[0]);},200);
+                }
+            }
+            
+            socket.on('new message', function (data)
+            {
+                listener(data);
+            });
+            socket.on('admin',function(data)
+                     {
+                listener(data);
+            });
+            
+           
+            
+           
+   
+        }
+    //
+    //
+        //socket.on('disconnect', function () { });
+        
+    </script>
+
+
+
+
+  
+
+
+</head>
+<body>
+    <div id="titlediv">
+        
+    </div>
+    <div id="c" class="normdiv" style="top:30%;">
+        <div class="context">
+           
+        </div>
+
+        <div class="context">
+           
+
+
+        </div>
+
+    </div>
+    <div id="b" class="normdiv" style="top:55%;">
+        <div class="context">
+           
+        </div>
+
+        <div class="context">
+            
+        </div>
+    </div>
+    <div id="a" class="normdiv" style="top:80%;">
+        <div class="context">
+            
+        </div>
+
+        <div class="context">
+            
+        </div>
+    </div>
+</body>
+</html>
