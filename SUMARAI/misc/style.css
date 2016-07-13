@@ -1,0 +1,10 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #444;
+}
+
+#enchant-stage {
+    background-color: #fff;
+    border: 1px #111 solid;
+}
